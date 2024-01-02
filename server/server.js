@@ -35,12 +35,20 @@ app.use('/api', router);
 // });
 
 app.use('*', (req,res) => {
-    res.status(404).send('Not Found');
+    return res.status(404).send('Not Found');
 });
 
 app.use((err, req, res, next) => {
-    console.log(err);
-    res.status(500).send({ error: err });
+    const defaultErr = {
+        log: 'An Error Occurred',
+        status: 500,
+        message: { err: 'An error occurred' },
+      };
+      const errorObj = Object.assign({}, defaultErr, err);
+      console.log(errorObj.log);
+      return res.status(errorObj.status).json(errorObj.message);
+    // console.log(err);
+    // res.status(500).send({ error: err });
 });
 
 app.listen(PORT, () => {

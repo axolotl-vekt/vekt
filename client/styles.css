@@ -1,25 +1,32 @@
+body {
+  background-color: #faedcd;
+}
+
 * {
   margin:0;
   padding: 0;
 }
 
-/* html {
-  background-color: #ccd5ae;
-} */
+h3 {
+  text-align: center;
+  background-color: #578b61;
+  color: rgb(165, 213, 180);
+  padding-bottom: 10px;
+}
+
 h1 {
   text-align: center;
   font-family:'Courier New', Courier, monospace;
   font-size: 50px;
+  background-color: #578b61;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
  
 .loginPageContainer {
   display: flex;
 }
-/* #overlay {
-  position: fixed;
-  top: 470px;
-  right: 240px;
-} */
+
 .loginImg {
   display: flex;
   height: 100%;
@@ -89,6 +96,7 @@ h1 {
   cursor: pointer;
 }
 
+/* --------signup page---------- */
 .signUpPageContainer {
   display: flex;
   justify-content: space-around;
@@ -146,10 +154,8 @@ h1 {
   cursor: pointer;
 }
 
-body {
-  background-color: #faedcd;
-}
 
+/* --------- homepage --------- */
 .hp-header {
   background-color: #ccd5ae;
   text-align: center;
@@ -159,14 +165,33 @@ body {
 
 .entries-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* for elements to be fully centered --> translate */
+  transform: translate(-50%,-50%);
+  width: 250px;
+  height: 100px;
+  
+  /* for elements to be fully centered --> translate */
+  transform: translate(-50%,-50%);
   background-color: #f9f1de;
+  /* background-color: grey; */
   text-align: center;
   border-style: solid;
-  height: 24em;
+  height: 15em;
   width: 20em;
   border-radius: 1em;
-  border-color: #c5a789
+  border-color: #c5a789;
+  box-shadow: 5px 5px 5px #7e644a;
+}
+
+#newEntryBtns {
+  display: flex;
+  justify-content: center;
 }
 
 .entries {
@@ -184,20 +209,6 @@ body {
 
 .cardContainer {
   display: flex;
-}
-
-.entries-container{
-  /* flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 45%;
-  height: 45%;
-  background-color: rgb(235, 216, 216); */
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 #newEntry-btn {
@@ -221,7 +232,7 @@ body {
   color: rgb(82, 81, 81);
 }
 
-.updateBtn:hover, .deleteBtn:hover {
+.updateBtn:hover, .deleteBtn:hover , .save-entry-btn:hover, .popup-close-btn:hover {
   cursor: pointer;
 }
 
@@ -258,7 +269,7 @@ body {
   height: 2em;
   width: 6em;
   margin: 2em;
-  margin-top: 0;
+  /* margin-top: 0; */
 }
 
 .save-entry-btn {
@@ -275,7 +286,7 @@ body {
 }
 
 .navBarContainer {
-  background-color: #ccd5ae;
+  background-color: #c4cea0;
   padding: 1rem;
 }
 
@@ -310,8 +321,6 @@ body {
   grid-template-rows: repeat(4, 1fr);
   gap: 1em;
 }
-
-
 
 .individualCards {
   max-width: 80%;
@@ -421,5 +430,38 @@ body {
 
 .modalContainer {
   position: fixed;
-  background-color: grey;
+  top: 50%;
+  left: 50%;
+  /* for elements to be fully centered --> translate */
+  transform: translate(-50%,-50%);
+  width: 250px;
+  height: 100px;
+  background-color: #e3eacc;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px #3a5a40;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+
+.inputHealth {
+  width: 27px;
+}
+
+.modalBtnContainer {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
+.modalBtn {
+  background-color: #467750;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+}
+
+.modalBtn:hover {
+  cursor: pointer;
 }

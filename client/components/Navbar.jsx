@@ -10,6 +10,7 @@ function Navbar() {
           <li className='navigationLinks'><Link to="/about" style={{textDecoration:'none', color:'white'}}><strong>About</strong></Link></li>
           <li className='navigationLinks'><Link to="/contact" style={{textDecoration:'none', color:'white'}}><strong>Contact</strong></Link></li>
           <li className='navigationLinks'><Link to="/games" style={{textDecoration:'none', color:'white'}}><strong>Games</strong></Link></li>
+          <li className='navigationLinks'><Link to="/" style={{textDecoration:'none', color:'white'}}><strong>Logout</strong></Link></li>
         </ul>
       </div>
     </nav>

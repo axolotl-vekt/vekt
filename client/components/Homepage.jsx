@@ -7,6 +7,7 @@ import Navbar from './Navbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Modal from './Modal'
+import Quotes from './Quotes'
 
 
 function Homepage() {
@@ -141,6 +142,7 @@ function Homepage() {
   return (
     <div>
       <h1>VEKTOR</h1>
+      <h3><Quotes /></h3>
       <div>
         <Navbar />
       </div>
@@ -167,18 +169,18 @@ function Homepage() {
             </div>
           </div>
         ))}
-              <Modal isOpen={open} onClose={handleClose}  onSubmit={handleSubmit}>
-                <div>
-                  <form>
-                    <div>
-                      <label>Blood Sugar</label>
-                      <input type='text' onChange={handleChange} name='bloodSugar'/> mg/dL
-                    </div>
-                    <div>
-                      <label>Blood Pressure</label>
-                      <input type='text' onChange={handleChange} name='sysPressure'/> / <input type='text' onChange={handleChange} name='diaPressure'/> mmHg
-                    </div>
-                  </form>
+              <Modal isOpen={open} onClose={handleClose} onSubmit={handleSubmit}>
+                  <div>
+                    <form>
+                      <div>
+                        <label>Blood Sugar</label>
+                        <input type='text' onChange={handleChange} name='bloodSugar' className='inputHealth'/> mg/dL
+                      </div>
+                      <div>
+                        <label>Blood Pressure</label>
+                        <input type='text' onChange={handleChange} name='sysPressure' className='inputHealth'/> / <input type='text' onChange={handleChange} name='diaPressure' className='inputHealth'/> mmHg
+                      </div>
+                    </form>
                 </div>
               </Modal>
       </div>

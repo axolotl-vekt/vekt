@@ -82,14 +82,16 @@ function FoodLog(props) {
         {/* <label>
           Time: <input value={time || ''} onChange={setTime}></input>
         </label> */}
-        <p>Before or After meal?</p>
+        {/* <p>Before or After meal?</p> */}
         {/* link to where you can see the images */}
         <Link to='/foodlog'>Meal Log</Link>
-        <button className='save-entry-btn' onClick={saveEntry}>
-          Save Entry
-        </button>
-        <button className='popup-close-btn' onClick={() => props.setTrigger(false)}>Close</button>
-        { props.children }
+        <div id='newEntryBtns'>
+          <button className='save-entry-btn' onClick={saveEntry}>
+            Save Entry
+          </button>
+          <button className='popup-close-btn' onClick={() => props.setTrigger(false)}>Close</button>
+          { props.children }
+        </div>
       </div>
     </form>
 

@@ -128,7 +128,6 @@ controller.deleteEntry = async (req, res, next) => {
     }
 }
 
-//Not done yet, for the updateEntry
 controller.updateEntry = async (req, res, next) => {
     const { bloodSugar, sysPressure, diaPressure, id } = req.body;
     try {
