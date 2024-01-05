@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie';
+//need to fix cookie data flow, probably on the back end
 
 
 function Login() {
@@ -17,12 +18,15 @@ function Login() {
     }
 
     const navigate = useNavigate();
+
+    /**handles input */
     const handleChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
         setLogin({...loginData, [name]:value})
     }
 
+    /**does fetch request */
     const handleSubmit = async (e) => {
         e.preventDefault();
         // check what route for get request for login
@@ -49,8 +53,8 @@ function Login() {
         
     return(
         <div className='loginPageContainer'>
-            <div className='loginContainer'>
-                <div className='loginCard'>
+            <div className="centered">Invektus</div>
+            <div className='loginCard'>
                     <h2 className='loginTitle'>Login</h2>
                     <form className='loginInputForm' onSubmit={handleSubmit}>
                         <div className='loginLabelDiv'>
@@ -72,10 +76,14 @@ function Login() {
                         <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
                     </form>
                 </div>
-            </div>
+            {/* <div className='loginContainer'>
+                
+            </div> */}
             <div >
-                <h3 id="overlay">Vektor</h3>
-                <img className='loginImg' src="https://pics.craiyon.com/2023-06-26/5c43832150134eb99cdee5fde6ffa06b.webp" alt="" />
+                {/* <img className='loginImg' src="https://pics.craiyon.com/2023-06-26/5c43832150134eb99cdee5fde6ffa06b.webp" alt="" /> */}
+                {/* <img className='loginImg3' src="https://www.caseblink.com/joinPageWawes.png" alt="" /> */}
+                {/* <img className='loginImg3' src="https://static6.depositphotos.com/1001877/555/i/600/depositphotos_5553681-stock-photo-stethoscope-and-a-silhouette-of.jpg" alt="" /> */}
+                
             </div>
         </div>
     )

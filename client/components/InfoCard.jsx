@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 
+/**user daily entry for blood sugar and blood pressure*/
+
 const useInput = ({start}) => {
     const [value, setValue] = useState(start);
     const onChange = (e) => {
@@ -10,8 +12,6 @@ const useInput = ({start}) => {
   };
 
 function InfoCard() {
-
-
   return (
     <div className='entries-container'>
       Entries

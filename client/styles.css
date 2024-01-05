@@ -1,84 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital@1&family=Poppins");
+
+body {
+  /* background-color: #faedcd; */
+  background-color: #d0e6f3;
+  background-image: linear-gradient(160deg, #cadae3 0%);
+  font-family: "Poppins", sans-serif;
+}
+
 * {
-  margin:0;
+  margin: 0;
   padding: 0;
 }
 
-/* html {
-  background-color: #ccd5ae;
-} */
+h3 {
+  text-align: center;
+  background-color: rgb(187, 201, 200);
+  color: rgb(255, 255, 255);
+  padding-bottom: 10px;
+}
+
 h1 {
   text-align: center;
-  font-family:'Courier New', Courier, monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 50px;
+  background-color: rgb(157, 190, 190);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
 }
- 
+
+button {
+  font-family: "Poppins", sans-serif;
+}
+
 .loginPageContainer {
   display: flex;
+  flex-direction: column;
+  /* margin-top: 10%;
+  margin-left: 15%; */
+  align-items: center;
+  justify-content: center;
+  /* margin-right: auto; */
+  /* align-items: center; */
 }
-/* #overlay {
-  position: fixed;
-  top: 470px;
-  right: 240px;
-} */
+
 .loginImg {
-  display: flex;
-  height: 100%;
-  width: 100%;
+  height: 35%;
+  width: 35%;
+  position: absolute;
+  right: 45px;
+  bottom: 200px;
+  padding: 0px 50px;
 }
+
+.loginImg2 {
+  height: 30%;
+  width: 30%;
+  position: absolute;
+  right: 50px;
+  bottom: 100px;
+  padding: 0px 50px;
+}
+
+.loginImg3 {
+  height: 760px;
+  width: 50%;
+  position: absolute;
+  z-index: -1;
+  /* padding: 0px 50px; */
+}
+.centered {
+  /* position: absolute; */
+  /* top: 5%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  font-family: "Poppins", sans-serif;
+  font-size: 100px;
+  margin-top: 50px;
+  /* background: white; */
+  /* width: 100%;
+  /* display: flex; */
+  align-items: center;
+  justify-items: center;
+}
+
 .loginContainer {
-    display: flex;
-    justify-content: space-around;
-    background-color: #ccd5ae;
+  display: flex;
+  /* justify-content: space-around; */
+  background-color: #b1c6d2;
+  height: 100%;
+  width: 50%;
+  padding: 0px 30px;
 }
+
 .loginCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    justify-items: center;
-    width: 25rem;
-    border-radius: 10px;
-    margin: 10rem;
-    padding: 5rem 0;
-    box-shadow: 10px 10px 10px #3a5a40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  justify-items: center;
+  width: 30rem;
+  border-radius: 10px;
+  margin: 40px;
+  padding: 5rem 0;
+  box-shadow: 10px 10px 10px #67776a;
 }
 
 .loginTitle {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .loginInputForm {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 .loginLabelDiv {
-    margin-top: 1rem;
-    justify-items: center;
-    font-size: 17px;
+  margin-top: 1rem;
+  justify-items: center;
+  font-size: 17px;
 }
 
 .loginInput {
-    border: none;
-    border-radius: 10px;
-    height: 2rem;
-    width: 15rem;
-    background-color: #e9edc9;
-    text-align: center;
+  border: none;
+  border-radius: 10px;
+  height: 2rem;
+  width: 15rem;
+  /* change this color to pink */
+  background-color: #e2effa;
+  text-align: center;
+  outline: none;
 }
 
 .loginButton {
-    width: 100%;
+  width: 100%;
 }
 
 .loginBtn {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .loginBtn button {
-  background-color: #ccd5ae;
+  background-color: #467750;
   color: white;
   border: none;
   padding: 10px;
@@ -89,10 +154,11 @@ h1 {
   cursor: pointer;
 }
 
+/* --------signup page---------- */
 .signUpPageContainer {
   display: flex;
   justify-content: space-around;
-  background-color: #ccd5ae;
+  background-color: #D0E6F3;
 }
 
 .signUpCard {
@@ -119,7 +185,7 @@ h1 {
 }
 
 .signUpInput:focus {
-  outline:none;
+  outline: none;
 }
 
 .signUpButtons {
@@ -129,44 +195,61 @@ h1 {
 
 .signUpSubmitBtn {
   border: none;
-  background-color: #ccd5ae;
+  background-color: #467750;
   color: white;
   border-radius: 5px;
   padding: 0.5rem;
 }
 
 .signUpCancelBtn {
-  border: 2px solid #ccd5ae;
+  border: 2px solid #467750;
   background-color: white;
   border-radius: 5px;
   padding: 0.5rem;
 }
 
-.signUpSubmitBtn, .signUpCancelBtn:hover {
+.signUpSubmitBtn,
+.signUpCancelBtn:hover {
   cursor: pointer;
 }
 
-body {
-  background-color: #faedcd;
-}
-
+/* --------- homepage --------- */
 .hp-header {
-  background-color: #ccd5ae;
+  background-color: #467750;
   text-align: center;
   font-size: 80px;
-  color: #ffffff
+  color: #ffffff;
 }
 
 .entries-container {
   display: flex;
-  flex-direction: column;
-  background-color: #f9f1de;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* for elements to be fully centered --> translate */
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 160px;
+
+  /* for elements to be fully centered --> translate */
+  transform: translate(-50%, -50%);
+  background-color: #cad1d2;
+  /* background-color: grey; */
   text-align: center;
   border-style: solid;
-  height: 24em;
-  width: 20em;
+  /* height: 15em;
+  width: 20em; */
   border-radius: 1em;
-  border-color: #c5a789
+  border-color: #cad1d2;
+  box-shadow: 5px 5px 5px #467750;
+}
+
+#newEntryBtns {
+  display: flex;
+  justify-content: center;
 }
 
 .entries {
@@ -174,39 +257,21 @@ body {
   flex-direction: column;
   justify-content: space-between;
   text-align: left;
-  margin-left: 1em;
   /* ----------- */
   position: relative;
-  padding: 32px;
-  width: 100%;
-  max-width: 640px;
+  width: 300px;
 }
 
 .cardContainer {
   display: flex;
 }
 
-.entries-container{
-  /* flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 45%;
-  height: 45%;
-  background-color: rgb(235, 216, 216); */
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 #newEntry-btn {
-  background-color: #edc298;
+  background-color: #467750;
+  color: white;
+  /* padding: 10px; */
   border: none;
   border-radius: 1em;
-  height: 2em;
-  width: 6em;
-  margin: 2em;
 }
 
 #newEntry-btn:hover {
@@ -214,14 +279,18 @@ body {
   cursor: pointer;
 }
 
-.updateBtn, .deleteBtn {
+.updateBtn,
+.deleteBtn {
   background-color: transparent;
   border: none;
   padding: 10px;
   color: rgb(82, 81, 81);
 }
 
-.updateBtn:hover, .deleteBtn:hover {
+.updateBtn:hover,
+.deleteBtn:hover,
+.save-entry-btn:hover,
+.popup-close-btn:hover {
   cursor: pointer;
 }
 
@@ -243,7 +312,9 @@ body {
 }
 
 .inputBar {
-  width: 27px;
+  width: 25px;
+  outline: none;
+  margin-left: 4px;
 }
 
 .paragraphBP {
@@ -252,22 +323,24 @@ body {
 }
 
 .popup-close-btn {
-  background-color: #edc298;
+  background-color: #467750;
   border: none;
   border-radius: 1em;
   height: 2em;
   width: 6em;
   margin: 2em;
-  margin-top: 0;
+  color: white;
+  /* margin-top: 0; */
 }
 
 .save-entry-btn {
-  background-color: #edc298;
+  background-color: #467750;
   border: none;
   border-radius: 1em;
   height: 2em;
   width: 6em;
   margin: 2em;
+  color: white;
 }
 
 .graphs {
@@ -275,7 +348,7 @@ body {
 }
 
 .navBarContainer {
-  background-color: #ccd5ae;
+  background-color: #78a6a2;
   padding: 1rem;
 }
 
@@ -311,8 +384,6 @@ body {
   gap: 1em;
 }
 
-
-
 .individualCards {
   max-width: 80%;
   max-height: 10rem;
@@ -327,11 +398,12 @@ body {
   transition: transform 0.5s;
 }
 
-@keyframes hideCard{
-  0%, 70%{
+@keyframes hideCard {
+  0%,
+  70% {
     transform: rotateY(0);
   }
-  100%{
+  100% {
     transform: rotateY(180deg);
   }
 }
@@ -345,32 +417,29 @@ body {
 }
 
 @keyframes hideImg {
-  0%, 70% {
+  0%,
+  70% {
     transform: scale(1);
   }
-  100%{
-    transform: scale(0)
+  100% {
+    transform: scale(0);
   }
 }
 
 .individualCards.active {
   transform: rotateY(0);
-  
 }
 
 .individualCards.wrong {
   background-color: red;
-  
 }
 
 .individualCards.correct {
-  background-color: green;
-  
+  background-color: rgb(119, 154, 166);
 }
 
 .individualCards.active img {
   transform: scale(1);
-  
 }
 
 .graphs {
@@ -393,13 +462,12 @@ body {
 .entriesHomepage {
   display: flex;
   justify-content: space-around;
-  background-color: #ccd5ae;
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 10px;
-  border: 1px solid black;
+  border: 0px none black;
   width: 20rem;
   margin: 10px;
-  box-shadow: 5px 5px 5px #3a5a40;
 }
 
 .oneGame {
@@ -407,7 +475,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 5rem;
-  background-color: #ccd5ae;
+  background-color: #467750;
   width: 250px;
   padding: 0 0 1rem;
   font-size: 25px;
@@ -421,5 +489,89 @@ body {
 
 .modalContainer {
   position: fixed;
-  background-color: grey;
+  top: 50%;
+  left: 50%;
+  /* for elements to be fully centered --> translate */
+  transform: translate(-50%, -50%);
+  width: 270px;
+  height: 130px;
+  background-color: #cad1d2;
+  border-radius: 5px;
+  /* box-shadow: 10px 10px 10px #95a1e8; */
+  padding: 10px;
+  border: 1px solid black;
+}
+/*  */
+.inputHealth {
+  width: 25px;
+  outline: none;
+  margin: 5px;
+}
+
+.modalBtnContainer {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
+.modalBtn {
+  background-color: #467750;
+  color: white;
+  border-radius: 20px;
+  padding: 5px;
+  border: none;
+  width: 70px;
+}
+
+.modalBtn:hover {
+  cursor: pointer;
+}
+
+/* --------about page---------- */
+.aboutbody {
+  display: flex;
+  text-align: start;
+  font-size: 105%;
+  font-family: "Poppins", sans-serif;
+  justify-content: space-around;
+  padding: 0px 30px;
+}
+
+/* --------user page---------- */
+.userInfo {
+  align-content: center;
+  font-size: 100%;
+  font-family: "Poppins", sans-serif;
+  padding: 0px 30px;
+}
+
+.userInfo > label > input {
+  font-family: "Poppins", sans-serif;
+  border: 2px;
+  border-radius: 5px;
+  padding: 0px 5px;
+  margin: 0px 10px;
+  height: 30px;
+  /* margin-left:5px */
+}
+
+.userSaveBtn {
+  font-family: "Poppins", sans-serif;
+  font-size: 100%;
+  padding: 5px 30px;
+  border-radius: 5px;
+}
+
+.optIn {
+  /* align-content: center; */
+  /* Use a flexbox layout */
+  display: flex;
+
+  /* Make a horizontal flexbox (the default) */
+  flex-direction: row;
+
+  /* The important part: vertically center the items */
+  align-items: center;
+
+  justify-content: center;
 }

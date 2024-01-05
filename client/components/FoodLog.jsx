@@ -11,7 +11,6 @@ const useInput = ({ start }) => {
   return [value, onChange];
 };
 
-
 function FoodLog(props) {
   
   const username = props.getCookie('username');
@@ -53,20 +52,26 @@ function FoodLog(props) {
   };
 
   const date = new Date();
+  
+  function closeReRender(){
+    props.setTrigger(false);
+    props.setCount(props.count + 1);
+  }
 
   return (props.trigger) ? (
     <div>
     <form className='entries-container'>
       <div className='entries'>
-        {image === '' || image === null ? ('') : 
-        (<img width={250} height={250} src={image} alt='Recipe Image' />
-        )}
+        {/* {image === '' || image === null ? ('') : 
+        (<img width={400} height={250} src={image} alt='Recipe Image' />
+        )} */}
+        <br/>
         <label>
           Date: {date.toLocaleDateString()}
         </label>
         <label className='bloodSugarInput'>
-          Blood Sugar:
-          <input value={bloodSugar || ''} onChange={setBloodSugar}></input> <p className='paragraphBP'>mg/dL</p>
+          Blood Sugar: 
+          <input className='inputBar' value={bloodSugar || ''} onChange={setBloodSugar}></input> <p className='paragraphBP'>mg/dL</p>
         </label>
         <label className='bloodPressure'>
           Blood Pressure:
@@ -82,14 +87,16 @@ function FoodLog(props) {
         {/* <label>
           Time: <input value={time || ''} onChange={setTime}></input>
         </label> */}
-        <p>Before or After meal?</p>
+        {/* <p>Before or After meal?</p> */}
         {/* link to where you can see the images */}
-        <Link to='/foodlog'>Meal Log</Link>
-        <button className='save-entry-btn' onClick={saveEntry}>
-          Save Entry
-        </button>
-        <button className='popup-close-btn' onClick={() => props.setTrigger(false)}>Close</button>
-        { props.children }
+        {/* <Link to='/foodlog'>Meal Log</Link> */}
+        <div id='newEntryBtns'>
+          <button className='save-entry-btn' onClick={saveEntry}>
+            Save Entry
+          </button>
+          <button className='popup-close-btn' onClick={closeReRender}>Close</button>
+          { props.children }
+        </div>
       </div>
     </form>
 

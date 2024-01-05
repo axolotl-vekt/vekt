@@ -7,36 +7,52 @@ import Navbar from './Navbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Modal from './Modal'
+import Quotes from './Quotes'
+import { DatasetController } from 'chart.js';
 
 
 function Homepage() {
   
   function getCookie(name) {
+    /**place the data into an array */
     const cookies = document.cookie.split('; ');
+    console.log('COOKIES', cookies)
+    /**iterate through the cookies array */
     for (const cookie of cookies) {
+      /**checks if the array contains '=' and removes it*/
       const [cookieName, cookieValue] = cookie.split('=');
+      /**if cookieName matches name, then we will return the cookieValue */
       if (cookieName === name) {
         return cookieValue;
       }
     }
+    /**else return null */
     return null;
   }
+  /**assign usernameCookie to username - login name */
   const usernameCookie = getCookie('username')
   console.log(usernameCookie)
   const cards = [];
   // for (let i = 0; i < 3; i++) {
   //   cards.push(<InfoCard key={crypto.randomUUID()}/>);
   // }
+  /**set buttonPopup to false */
   const [buttonPopup, setButtonPopup] = useState(false);
+  /**set data to empty array */
   const [ data, setData ] = useState([]);
+  const [ count, setCount] = useState(1);
+
 
   useEffect(() => {
+    /**fetching the data from router/homepage - which grabs all of the data from mongodb */
     fetch('http://localhost:3000/api/homepage/bloodsugar')
+    /**parses the data */
     .then(response => response.json())
     .then(data => {
       const array = []
+      /**iterate through the data */
       data.forEach(el => { 
-      
+      /**check if the username makes the usernameCookie */
         if(el.username === usernameCookie){
           const dateObject = new Date(el.date);
           const options = { weekday: 'short', month: 'numeric', day: 'numeric', hour: 'numeric', minute:'numeric' };
@@ -57,7 +73,8 @@ function Homepage() {
       setData(array)
     })
     .catch(error => console.log('Error displaying entries on homepage'))
-  },[data])
+    /**removed data from [data] - so browser does constantly render */
+  },[count])
   
   // const navigate = useNavigate();
 
@@ -66,10 +83,12 @@ function Homepage() {
   // };
 
   function getCookie(cookieName) {
+    /**stores data into array */
     const cookies = document.cookie.split('; ');
-  
+    /**iterates through the array and removes the '=' */
     for (const cookie of cookies) {
       const [name, value] = cookie.split('=');
+      /**returns the value if name equals to cookieName */
       if (name === cookieName) {
         return decodeURIComponent(value);
       }
@@ -78,6 +97,7 @@ function Homepage() {
     return null;
   }
 
+  /**deletes the account */
   const handleDelete = (id) => {
     fetch(`http://localhost:3000/api/delete/${id}`, {
       method: 'DELETE',
@@ -86,7 +106,9 @@ function Homepage() {
       }
     })
     .then(console.log('successfully deleted'))
+    .then(setCount(count + 1))
     .catch(err => console.log(err))
+
   }
 
   //update pop up modal:
@@ -104,6 +126,8 @@ function Homepage() {
   };
 
   const handleClose = () => {
+    setCount(count + 1)
+    console.log("COUNT", count)
     setOpen(false)
     setItemId(null)
     setFormData({
@@ -113,6 +137,7 @@ function Homepage() {
     })
   }
 
+  /**saves the blood/press entries */
   const handleSubmit = () => {
     if (itemId) {
       const selectedItem = data.find(item => item._id === itemId)
@@ -131,6 +156,8 @@ function Homepage() {
         })
       }
     }
+    setCount(count + 1)
+    console.log("COUNT", count)
   }
 
   const handleChange = (e) => {
@@ -140,19 +167,20 @@ function Homepage() {
 
   return (
     <div>
-      <h1>VEKTOR</h1>
+      <h1>Invektus</h1>
+      {/* <h3><Quotes /></h3> */}
       <div>
         <Navbar />
       </div>
       <div className='graphs'>
-        <SugarGraph username={usernameCookie}/>
-        <BloodPressureGraph username={usernameCookie}/>
+        <SugarGraph username={usernameCookie} count={count}/>
+        <BloodPressureGraph username={usernameCookie} count={count}/>
       </div>
       <div className='newEntryBtnContainer'>
         <button id='newEntry-btn' onClick={() => setButtonPopup(true)}>New Entry</button>
       </div>
       {/* <div className='card-container'>{cards}</div> */}
-      <FoodLog trigger={buttonPopup} setTrigger={setButtonPopup} getCookie={getCookie}></FoodLog>
+      <FoodLog trigger={buttonPopup} setTrigger={setButtonPopup} getCookie={getCookie} setCount={setCount} count={count}></FoodLog>
       <div className='entriesContainer'>
         {data.map(item => (
           <div key={item._id} className='entriesHomepage'>
@@ -167,18 +195,18 @@ function Homepage() {
             </div>
           </div>
         ))}
-              <Modal isOpen={open} onClose={handleClose}  onSubmit={handleSubmit}>
-                <div>
-                  <form>
-                    <div>
-                      <label>Blood Sugar</label>
-                      <input type='text' onChange={handleChange} name='bloodSugar'/> mg/dL
-                    </div>
-                    <div>
-                      <label>Blood Pressure</label>
-                      <input type='text' onChange={handleChange} name='sysPressure'/> / <input type='text' onChange={handleChange} name='diaPressure'/> mmHg
-                    </div>
-                  </form>
+              <Modal isOpen={open} onClose={handleClose} onSubmit={handleSubmit}>
+                  <div>
+                    <form>
+                      <div>
+                        <label>Blood Sugar</label>
+                        <input type='text' onChange={handleChange} name='bloodSugar' className='inputHealth'/> mg/dL
+                      </div>
+                      <div>
+                        <label>Blood Pressure</label>
+                        <input type='text' onChange={handleChange} name='sysPressure' className='inputHealth'/> / <input type='text' onChange={handleChange} name='diaPressure' className='inputHealth'/> mmHg
+                      </div>
+                    </form>
                 </div>
               </Modal>
       </div>
