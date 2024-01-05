@@ -1,45 +1,70 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
-const config = {
-  mode: 'development',
+module.exports = {
+  mode: process.env.NODE_ENV || 'developement',
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
-      },
+        test: /\.jsx?/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: 'defaults' }],
+              ['@babel/preset-react'],
+            ],
+          },
+        },
+        
+        },
       {
-        test: /\.s?css$/,
-        use: ['style-loader', 'css-loader'],
-        exclude: /node_modules/
-      }
-    ]
+        test: /\.(sa|sc|c)ss$/i,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [autoprefixer],
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './client/index.html',
-    })
+    }),
   ],
-	devServer: {
+  devServer: {
     static: {
-      publicPath: '/dist', 
-      directory: path.join(__dirname, 'dist')
-    }, 
-	  proxy: {'/api': 'http://localhost:3000'},
-    //allows us to go directly to the homepage or wahtever we type --> redirect all server requests to your root HTML file, allowing React Router to handle the routing 
+      publicPath: '/dist',
+      directory: path.join(__dirname, 'dist'),
+    },
+    proxy: { '/api': 'http://localhost:3000' },
     historyApiFallback: true,
-  }
+  },
 };
-
-module.exports = config;

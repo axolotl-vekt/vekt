@@ -1,21 +1,19 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 
-const useInput = ({start}) => {
-    const [value, setValue] = useState(start);
-    const onChange = (e) => {
-      setValue(e.target.value);
-    };
-    return [value, onChange];
+const useInput = ({ start }) => {
+  const [value, setValue] = useState(start);
+  const onChange = (e) => {
+    setValue(e.target.value);
   };
+  return [value, onChange];
+};
 
 function InfoCard() {
-
-
   return (
-    <div className='entries-container'>
+    <div className="entries-container">
       Entries
-      <div className='entries'>
+      <div className="entries">
         <p>Date:</p>
         <p>Blood sugar:</p>
         <p>Blood Pressure:</p>
